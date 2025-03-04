@@ -1,0 +1,10 @@
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "v1.0.0"
+        required: true
+      branch:
+        description: "main"
+        required: true
+        default: "main"
