@@ -22,7 +22,7 @@ jobs:
         run: docker build -t localtesting/welcome .
 
       - name: Tag Docker Image
-        run: docker tag localtesting/welcome your-dockerhub-username/welcome:latest
+        run: docker tag localtesting/welcome kewtz9/welcome:latest
 
       - name: Push Docker Image
-        run: docker push your-dockerhub-username/welcome:latest
+        run: docker push kewtz9/welcome:latest
