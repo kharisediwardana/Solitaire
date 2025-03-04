@@ -1,3 +1,5 @@
+name: Build and Push Docker Image
+
 on:
   workflow_dispatch:
     inputs:
@@ -8,3 +10,19 @@ on:
         description: "main"
         required: true
         default: "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t testing/welcome:latest -t testing/welcome:${{ github.event.inputs.release_tag }} .
+          docker push testing/welcome:latest
+          docker push testing/welcome:${{ github.event.inputs.release_tag }}
